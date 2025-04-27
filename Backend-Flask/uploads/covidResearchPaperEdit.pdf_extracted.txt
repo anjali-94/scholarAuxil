@@ -1,0 +1,75 @@
+The disruptive eects of the COVID-19 outbreak have impacted almost all sectors of our society. Higher
+education is no exception. Anecdotal evidence paints a bleak picture for both students and universities.
+According to the American Council on Education, enrollment is likely to drop by 15% in the fall of 2020,
+while at the same time many institutions may have to confront demands for large tuition cuts if classes
+remain virtual.1In a similar vein, students face an increasingly uncertain environment, where nancial and
+health shocks (for example, lack of resources to complete their studies or fear of becoming seriously sick),
+along with the transition to online learning may have aected their academic performance, educational plans,
+current labor market participation, and expectations about future employment.
+This paper attempts to shed light on the impact of the COVID-19 pandemic on college students. First,
+we describe and quantify the causal eects of the COVID-19 outbreak on a wide set of students' out-
+comes/expectations. In particular, we analyze enrollment and graduation decisions, academic performance,
+major choice, study and social habits, remote learning experiences, current labor market participation,
+and expectations about future employment. Second, we study how these eects dier along existing so-
+cioeconomic divides, and whether the pandemic has exacerbated existing inequalities. Finally, we present
+suggestive evidence on the mechanisms behind the heterogeneous COVID-19 eects by quantifying the role
+of individual-level nancial and health shocks on academic decisions and labor market expectations.
+For this purpose, we surveyed about 1,500 undergraduate students at Arizona State University (ASU),
+one of the largest public universities in the United States, in late April 2020. The fact that ASU is a large
+and highly diverse institution makes our ndings relevant for most public institutions in the country. The
+survey was explicitly designed to not only collect student outcomes and expectations after the onset of the
+pandemic, but also to recover counterfactual outcomes in the absence of the outbreak. Specically, the survey
+asked students about their current experiences/expectations and what those experiences/expectations would
+have been had it not been for the pandemic. Because we collect information conditional on both states of
+the world (with the COVID-19 pandemic, and without) from each student , we can directly analyze how
+each student believes COVID-19 has impacted their current and future outcomes.2For example, by asking
+students about their current GPA in a post-COVID-19 world and their expected GPA in the absence of
+COVID-19, we can back out the subjective treatment eect of COVID-19 on academic performance. The
+credibility of our approach depends on: (1) students having well-formed beliefs about outcomes in the
+counterfactual scenario. This is a plausible assumption in our context since the counterfactual state is a
+1See, the New York Times article \After Coronavirus, Colleges Worry: Will Students Come Back?" (April 15, 2020) for a
+discussion surrounding students' demands for tuition cuts.
+2In some cases, instead of asking students for the outcomes in both states of the world, we directly ask for the dierence.
+For example, the survey asked how the pandemic had aected the student's graduation date.
+realistic and relevant one - it was the status quo less than two months before the survey, and (2) there being
+no systematic bias in the reporting of the data - an assumption that is implicitly made when using any
+Our ndings on academic outcomes indicate that COVID-19 has led to a large number of students delaying
+graduation (13%), withdrawing from classes (11%), and intending to change majors (12%). Moreover,
+approximately 50% of our sample separately reported a decrease in study hours and in their academic
+performance. The data also show that while all subgroups of the population have experienced negative
+eects due to the outbreak, the size of the eects is heterogeneous. For example, compared to their higher-
+income counterparts, lower-income students (those with below-median parental income) are substantially
+more likely to delay graduation. Finally, we nd that students report a decrease in their likelihood of taking
+online classes as a result of their recent experiences. These eects are, however, more than 150% larger for
+honors students, suggesting that, a priori, most engaged students strongly prefer in-person classes.
+As expected, the COVID-19 outbreak also had large negative eects on students' current labor market
+participation and expectations about post-college labor outcomes. Working students suered a 31% decrease
+in their wages and a 37% drop in weekly hours worked, on average. Moreover, around 40% of students lost
+a job, internship, or a job oer, and 61% reported to have a family member that experienced a reduction
+in income. The pandemic also had a substantial impact on students' expectations about their labor market
+prospects post-college. For example, their perceived probability of nding a job decreased by almost 20%,
+and their expected earnings when 35 years old (around 15 years from the outbreak) declined by approximately
+2.5%. This last nding suggests that students expect the pandemic to have a long-lasting impact on their
+labor market prospects.
+We nd that the substantial variation in the impact of COVID-19 on students tracked with existing
+socioeconomic divides. For example, compared to their more auent peers, lower-income students are 55%
+more likely to delay graduation due to COVID-19 and are 41% more likely to report that COVID-19 impacted
+their major choice. Further, COVID-19 nearly doubled the gap between higher- and lower-income students'
+expected GPA.4There also is substantial variation in the pandemic's eect on preference for online learning,
+with Honors students and males revising their preferences down by more than 2.5 times as much as their
+peers. However, despite appearing to be more disrupted by the switch to online learning, the impact of
+COVID-19 on Honors students' academic outcomes is consistently smaller than the impact on non-Honors
+3This approach has been used successfully in several other settings, such as to construct career and family returns to
+college majors (Arcidiacono et al., 2020; Wiswall and Zafar, 2018), and the causal impact of health on retirement (Shapiro and
+4The income gap in GPA increased from 0.052 to 0.098 on a 4 point scale. It is signicant at the 1% level in both scenarios.
+
+References
+down by more than 2.5 times as much as their
+peers. However, despite appearing to be more disrupted by the switch to online learning, the impact of
+COVID-19 on Honors students' academic outcomes is consistently smaller than the impact on non-Honors
+students.
+3This approach has been used successfully in several other settings, such as to construct career and family returns to
+college majors (Arcidiacono et al., 2020; Wiswall and Zafar, 2018), and the causal impact of health on retirement (Shapiro and
+Giustinelli, 2019)
+4The income gap in GPA increased from 0.052 to 0.098 on a 4 point scale. It is signicant at the 1% level in both scenarios.
+3

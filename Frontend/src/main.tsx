@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Login from './Login.tsx'
 import Signup from './Signup.tsx'
+import LandingPage from './LandingPage.tsx'
 import './index.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { initializeApp } from "firebase/app";
@@ -28,8 +29,28 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<AuthRoute><App /></AuthRoute>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   </React.StrictMode>
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

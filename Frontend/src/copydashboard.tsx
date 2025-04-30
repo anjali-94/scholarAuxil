@@ -45,35 +45,13 @@ const Dashboard: React.FC = () => {
     navigate('/LandingPage');
   };
 
-  const handleExtractCitations = async () => {
+  const handleExtractCitations = () => {
     if (!uploadedFile) {
       message.warning('Please upload a document first.');
       return;
     }
-  
-    const formData = new FormData();
-    formData.append('file', uploadedFile);
-  
-    try {
-      const response = await fetch('http://localhost:5000/extract-citations', {  // Update URL to your backend
-        method: 'POST',
-        body: formData,
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Extracted Citations:', data.citations); 
-        setCitations(data.citations.join('\n')); 
-        message.success('Citations extracted successfully!');
-      } else {
-        message.error('Failed to extract citations.');
-      }
-    } catch (error) {
-      console.error(error);
-      message.error('Something went wrong while extracting citations.');
-    }
+    setCitations('Citation 1\nCitation 2\nCitation 3\n...');
   };
-  
 
   const handleTaskToggle = (id: number) => {
     setTasks((prev) =>
@@ -166,33 +144,25 @@ const Dashboard: React.FC = () => {
       </label>
 
       <Upload
-  beforeUpload={(file) => {
-    setUploadedFile(file);
-    console.log('Uploaded File:', file);
-    return false;
-  }}
-  showUploadList={false}
->
-  <Button icon={<UploadOutlined />} size="large" 
-    style={{
-      padding: '18px',
-      borderRadius: '10px',
-      textAlign: 'center',
-      cursor: 'pointer',
-      boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)'
-    }}
-  >
-    Click to Upload
-  </Button>
-</Upload>
-
-{/* Show uploaded file name */}
-{uploadedFile && (
-  <div style={{ marginTop: '12px', fontWeight: 600, fontSize: '16px', color: '#2563eb', textAlign: 'center' }}>
-    Selected File: {uploadedFile.name}
-  </div>
-)}
-
+        beforeUpload={(file) => {
+          setUploadedFile(file);
+          return false;
+        }}
+        showUploadList={false}
+      >
+          <Button icon={<UploadOutlined />} size="large" 
+          style={{
+            padding: '18px',
+            borderRadius: '10px',
+            textAlign: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)'
+          }}
+          >
+            Click to Upload
+          </Button>
+      
+      </Upload>
 
       <Button
         type="primary"
@@ -352,29 +322,4 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

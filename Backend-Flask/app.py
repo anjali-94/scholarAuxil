@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"]) 
 
-API_KEY = "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"
+API_KEY = "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"
 
 ALLOWED_EXTENSIONS = {'pdf', 'docx', 'png', 'jpg', 'jpeg'}
 

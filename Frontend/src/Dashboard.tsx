@@ -14,10 +14,15 @@ import moment from 'moment';
 
 const { Header, Sider, Content } = Layout;
 
+type Citation = {
+  apa: string;
+  chicago: string;
+};
+
 const Dashboard: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [showBot, setShowBot] = useState(false);
-  const [citations, setCitations] = useState('');
+  const [citations, setCitations] = useState<Citation[]>([]);
   const [uploadedFile, setUploadedFile] = useState<any>(null);
   const [tasks, setTasks] = useState([
     { id: 1, text: 'Select Research Topic', completed: false },
@@ -45,13 +50,35 @@ const Dashboard: React.FC = () => {
     navigate('/LandingPage');
   };
 
-  const handleExtractCitations = () => {
+  const handleExtractCitations = async () => {
     if (!uploadedFile) {
       message.warning('Please upload a document first.');
       return;
     }
-    setCitations('Citation 1\nCitation 2\nCitation 3\n...');
+  
+    const formData = new FormData();
+    formData.append('file', uploadedFile);
+  
+    try {
+      const response = await fetch('http://localhost:5000/upload/pdf', {  // Update URL to your backend
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Extracted Citations:', data.citations); 
+        setCitations(data.citations.filter(c => c.apa.trim().length > 10));
+        message.success('Citations extracted successfully!');
+      } else {
+        message.error('Failed to extract citations.');
+      }
+    } catch (error) {
+      console.error(error);
+      message.error('Something went wrong while extracting citations.');
+    }
   };
+  
 
   const handleTaskToggle = (id: number) => {
     setTasks((prev) =>
@@ -144,25 +171,33 @@ const Dashboard: React.FC = () => {
       </label>
 
       <Upload
-        beforeUpload={(file) => {
-          setUploadedFile(file);
-          return false;
-        }}
-        showUploadList={false}
-      >
-          <Button icon={<UploadOutlined />} size="large" 
-          style={{
-            padding: '18px',
-            borderRadius: '10px',
-            textAlign: 'center',
-            cursor: 'pointer',
-            boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)'
-          }}
-          >
-            Click to Upload
-          </Button>
-      
-      </Upload>
+  beforeUpload={(file) => {
+    setUploadedFile(file);
+    console.log('Uploaded File:', file);
+    return false;
+  }}
+  showUploadList={false}
+>
+  <Button icon={<UploadOutlined />} size="large" 
+    style={{
+      padding: '18px',
+      borderRadius: '10px',
+      textAlign: 'center',
+      cursor: 'pointer',
+      boxShadow: '0 6px 12px rgba(0, 0, 0, 0.1)'
+    }}
+  >
+    Click to Upload
+  </Button>
+</Upload>
+
+{/* Show uploaded file name */}
+{uploadedFile && (
+  <div style={{ marginTop: '12px', fontWeight: 600, fontSize: '16px', color: '#2563eb', textAlign: 'center' }}>
+    Selected File: {uploadedFile.name}
+  </div>
+)}
+
 
       <Button
         type="primary"
@@ -174,18 +209,17 @@ const Dashboard: React.FC = () => {
         Extract Citations
       </Button>
 
-      <Input.TextArea
-        value={citations}
-        placeholder="Citations will appear here..."
-        rows={5}
-        style={{
-          marginTop: '24px',
-          borderRadius: '10px',
-          padding: '16px',
-          fontSize: '16px',
-          resize: 'none'
-        }}
-      />
+      {citations.length > 0 && (
+  <div className="mt-4">
+    <h2 className="text-lg font-bold mb-2">Citations</h2>
+    {citations.map((citation, index) => (
+      <div key={index} className="mb-4 p-2 border rounded">
+        <p><strong>APA:</strong> {citation.apa}</p>
+        <p><strong>Chicago:</strong> {citation.chicago}</p>
+      </div>
+    ))}
+  </div>
+)}
     </section>
 
     {/* Research Paper Progress */}
@@ -322,4 +356,29 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

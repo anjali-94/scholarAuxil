@@ -1,0 +1,694 @@
+[
+  {
+    "author": "of",
+    "year": "2021",
+    "title": "",
+    "context": "e\nFaculty Supervisor: Dr. Devendra Kumar Choudhary\nDECLARATION BY STUDENT\nThis is to certify that I, G.KARTHIKEYNI, a student of B.Sc.(H) Agriculture of 2021 -2025\nBatch, Amity Institute of Organic Agriculture, Amity University Uttar Pradesh, Noida have\nworked under the guidance and supervision of Dr. Deve",
+    "error": "Semantic Scholar API error: 400 - {\"error\":\"Unrecognized or unsupported fields: [pages, volume, issue, doi]\"}\n",
+    "apa": "of (2021). .",
+    "mla": "of. \".\" 2021.",
+    "chicago": "of. \".\" 2021.",
+    "bibtex": "@misc{of2021,\n  author = {of},\n  title = {},\n  year = {2021}\n}"
+  },
+  {
+    "doi": "10.1080/10572252.2025.2469075",
+    "title": "The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents",
+    "authors": [
+      "January, Emily"
+    ],
+    "journal": "Technical Communication Quarterly",
+    "publisher": "Informa UK Limited",
+    "year": 2025,
+    "volume": "",
+    "issue": "",
+    "pages": "1-17",
+    "url": "https://doi.org/10.1080/10572252.2025.2469075",
+    "type": "journal-article",
+    "raw_data": {
+      "indexed": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            23
+          ]
+        ],
+        "date-time": "2025-02-23T05:19:11Z",
+        "timestamp": 1740287951533,
+        "version": "3.37.3"
+      },
+      "reference-count": 53,
+      "publisher": "Informa UK Limited",
+      "funder": [
+        {
+          "DOI": "10.13039/100022671",
+          "name": "Conference on College Composition and Communication",
+          "doi-asserted-by": "publisher",
+          "award": [
+            "Emergent Researcher Award"
+          ],
+          "id": [
+            {
+              "id": "10.13039/100022671",
+              "id-type": "DOI",
+              "asserted-by": "publisher"
+            }
+          ]
+        }
+      ],
+      "content-domain": {
+        "domain": [
+          "www.tandfonline.com"
+        ],
+        "crossmark-restriction": true
+      },
+      "short-container-title": [
+        "Technical Communication Quarterly"
+      ],
+      "DOI": "10.1080/10572252.2025.2469075",
+      "type": "journal-article",
+      "created": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            23
+          ]
+        ],
+        "date-time": "2025-02-23T03:27:38Z",
+        "timestamp": 1740281258000
+      },
+      "page": "1-17",
+      "update-policy": "https://doi.org/10.1080/tandf_crossmark_01",
+      "source": "Crossref",
+      "is-referenced-by-count": 0,
+      "title": [
+        "The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents"
+      ],
+      "prefix": "10.1080",
+      "author": [
+        {
+          "given": "Emily",
+          "family": "January",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Weber State University"
+            }
+          ]
+        }
+      ],
+      "member": "301",
+      "published-online": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            22
+          ]
+        ]
+      },
+      "reference": [
+        {
+          "key": "e_1_3_2_2_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.2190/TW.42.2.e"
+        },
+        {
+          "issue": "1",
+          "key": "e_1_3_2_3_1",
+          "first-page": "29",
+          "article-title": "Thinking about social justice",
+          "volume": "1",
+          "author": "Agboka G. Y.",
+          "year": "2013",
+          "unstructured": "Agboka, G. Y. (2013). Thinking about social justice. International Professional Communication, 1(1), 29\u201338.",
+          "journal-title": "International Professional Communication"
+        },
+        {
+          "key": "e_1_3_2_4_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.2190/TW.44.3.e"
+        },
+        {
+          "key": "e_1_3_2_5_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1017/asr.2016.10"
+        },
+        {
+          "key": "e_1_3_2_6_1",
+          "volume-title": "The location of culture. 1994",
+          "author": "Bhabha H.",
+          "year": "2004",
+          "unstructured": "Bhabha, H. (2004). The location of culture. 1994. Routledge."
+        },
+        {
+          "key": "e_1_3_2_7_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572259509364602"
+        },
+        {
+          "issue": "2",
+          "key": "e_1_3_2_8_1",
+          "article-title": "Stories of Filipina suffrage: Remembering marginal histories in colonial contexts",
+          "volume": "22",
+          "author": "Bramlett K.",
+          "year": "2020",
+          "unstructured": "Bramlett, K. (2020). Stories of Filipina suffrage: Remembering marginal histories in colonial contexts. Peitho, 22(2). https://cfshrc.org/article/stories-of-filipina-suffrage-remembering-marginal-histories-in-colonial-contexts/",
+          "journal-title": "Peitho"
+        },
+        {
+          "key": "e_1_3_2_9_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1109/47.68420"
+        },
+        {
+          "issue": "2",
+          "key": "e_1_3_2_10_1",
+          "first-page": "9",
+          "article-title": "Technical communication, participatory action research, and global civic engagement: A teaching, research, and social action collaboration in Kenya",
+          "volume": "4",
+          "author": "Crabtree R. D.",
+          "year": "2005",
+          "unstructured": "Crabtree, R. D., & Sapp, D. A. (2005). Technical communication, participatory action research, and global civic engagement: A teaching, research, and social action collaboration in Kenya. REFLECTIONS: A Journal of Rhetoric, Civic Writing and Service Learning, 4(2), 9\u201333. https://digitalcommons.fairfield.edu/cgi/viewcontent.cgi?article=1036&&context=english-facultypubs&&sei-redir=1&referer=https%253A%252F%252Fscholar.google.com%252Fscholar%253Fhl%253Den%2526as_sdt%253D0%25252C45%2526q%253Dcrabtree%252Band%252Bsapp%252Btechnical%252Bcommunication%252Band%252Bparticipatory%252Baction%252Bresearch%2526btnG%253D#search=%22crabtree%20sapp%20technical%20communication%20participatory%20action%20research%22",
+          "journal-title": "REFLECTIONS: A Journal of Rhetoric, Civic Writing and Service Learning"
+        },
+        {
+          "issue": "1",
+          "key": "e_1_3_2_11_1",
+          "first-page": "33",
+          "article-title": "Minga Per\u00fa\u2019s strategy for social change in the Peruvian Amazon: A rhetorical model for participatory, intercultural practice to advance human rights",
+          "volume": "4",
+          "author": "Dura L.",
+          "year": "2013",
+          "unstructured": "Dura, L., Singhal, A., & Elias, E. (2013). Minga Per\u00fa\u2019s strategy for social change in the Peruvian Amazon: A rhetorical model for participatory, intercultural practice to advance human rights. Rhetoric, Professional Communication and Globalization, 4(1), 33\u201354. https://docs.lib.purdue.edu/rpcg/vol4/iss1/3",
+          "journal-title": "Rhetoric, Professional Communication and Globalization"
+        },
+        {
+          "key": "e_1_3_2_12_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10402659.2019.1735170"
+        },
+        {
+          "key": "e_1_3_2_13_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1109/TPC.2009.2035573"
+        },
+        {
+          "key": "e_1_3_2_14_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1111/j.1467-7660.2007.00406.x"
+        },
+        {
+          "key": "e_1_3_2_15_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.12987/yale/9780300176735.001.0001"
+        },
+        {
+          "key": "e_1_3_2_16_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/1361332990020207"
+        },
+        {
+          "key": "e_1_3_2_17_1",
+          "volume-title": "Remembering women differently: Refiguring rhetorical work",
+          "author": "Gaillet L. L.",
+          "year": "2019",
+          "unstructured": "Gaillet, L. L., & Bailey, H. G. (Eds.). (2019). Remembering women differently: Refiguring rhetorical work. University of South Carolina Press."
+        },
+        {
+          "issue": "2",
+          "key": "e_1_3_2_18_1",
+          "first-page": "13",
+          "article-title": "When women stand together as one",
+          "volume": "72",
+          "author": "Gbowee L.",
+          "year": "2019",
+          "unstructured": "Gbowee, L. (2019). When women stand together as one. Journal of International Affairs, 72(2), 13\u201318.",
+          "journal-title": "Journal of International Affairs"
+        },
+        {
+          "key": "e_1_3_2_19_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10130950.2019.1619263"
+        },
+        {
+          "key": "e_1_3_2_20_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1177/1050651912439539"
+        },
+        {
+          "key": "e_1_3_2_21_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1007/BF02435631"
+        },
+        {
+          "key": "e_1_3_2_22_1",
+          "volume-title": "Women\u2019s organizations and democracy in South Africa: Contesting authority",
+          "author": "Hassim S.",
+          "year": "2006",
+          "unstructured": "Hassim, S. (2006). Women\u2019s organizations and democracy in South Africa: Contesting authority. University of Wisconsin Press."
+        },
+        {
+          "issue": "3",
+          "key": "e_1_3_2_23_1",
+          "first-page": "7",
+          "article-title": "Theory-to-query: Developing a corpus-analysis method using computer programming and human analysis",
+          "volume": "68",
+          "author": "Itchuaqiyaq C. U.",
+          "year": "2021",
+          "unstructured": "Itchuaqiyaq, C. U., Ranade, N., & Walton, R. (2021). Theory-to-query: Developing a corpus-analysis method using computer programming and human analysis. Technical Communication, 68(3), 7\u201328. https://www.stc.org/techcomm/2021/07/30/theory-to-query-developing-a-corpus-analysis-method-using-computer-programming-and-human-analysis/",
+          "journal-title": "Technical Communication"
+        },
+        {
+          "key": "e_1_3_2_24_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/00335630701790834"
+        },
+        {
+          "key": "e_1_3_2_25_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1109/tpc.2022.3140883"
+        },
+        {
+          "key": "e_1_3_2_26_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10130950.2004.9674534"
+        },
+        {
+          "key": "e_1_3_2_27_1",
+          "volume-title": "How to be an antiracist",
+          "author": "Kendi I. X.",
+          "year": "2019",
+          "unstructured": "Kendi, I. X. (2019). How to be an antiracist. One World."
+        },
+        {
+          "key": "e_1_3_2_28_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2017.1259428"
+        },
+        {
+          "key": "e_1_3_2_29_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/02533952.2024.2333213"
+        },
+        {
+          "issue": "1",
+          "key": "e_1_3_2_30_1",
+          "first-page": "39",
+          "article-title": "Sue Williamson: The artist\u2019s struggle toward freedom in South Africa",
+          "volume": "7",
+          "author": "LaDuke B.",
+          "year": "1987",
+          "unstructured": "LaDuke, B. (1987). Sue Williamson: The artist\u2019s struggle toward freedom in South Africa. Journal of Social Theory in Art Education, 7(1), 39\u201348.",
+          "journal-title": "Journal of Social Theory in Art Education"
+        },
+        {
+          "key": "e_1_3_2_31_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.4135/9781412984270"
+        },
+        {
+          "key": "e_1_3_2_32_1",
+          "volume-title": "The South African Women\u2019s movement: The roles of feminism and multiracial cooperation in the struggle for Women\u2019s rights",
+          "author": "Lenser A.",
+          "year": "2019",
+          "unstructured": "Lenser, A. (2019). The South African Women\u2019s movement: The roles of feminism and multiracial cooperation in the struggle for Women\u2019s rights. University of Arkansas."
+        },
+        {
+          "key": "e_1_3_2_33_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1109/TPC.2007.908732"
+        },
+        {
+          "key": "e_1_3_2_34_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/02773940209391223"
+        },
+        {
+          "key": "e_1_3_2_35_1",
+          "first-page": "63",
+          "volume-title": "Communicating race, ethnicity, and identity in technical communication",
+          "author": "Medina C.",
+          "year": "2014",
+          "unstructured": "Medina, C. (2014). Tweeting collaborative identity: Race, ICTs, and performing latinidad. In M. F. Williams & O. Pimentel (Eds.), Communicating race, ethnicity, and identity in technical communication (pp. 63\u201386). Baywood."
+        },
+        {
+          "key": "e_1_3_2_36_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.58680/ce197916058"
+        },
+        {
+          "key": "e_1_3_2_37_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2016.1113025"
+        },
+        {
+          "key": "e_1_3_2_38_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1215/9780822384649"
+        },
+        {
+          "key": "e_1_3_2_39_1",
+          "unstructured": "Nilsson S. (2016). Coloured by race: A study about the making of coloured identities in South Africa. https://www.diva-portal.org/smash/get/diva2:939226/FULLTEXT01.pdf"
+        },
+        {
+          "key": "e_1_3_2_40_1",
+          "unstructured": "Parks M. (1986 June 24). S. Africa bulldozes crossroads shanties. Los Angeles Times. https://www.latimes.com/archives/la-xpm-1986-06-24-mn-20959-story.html"
+        },
+        {
+          "issue": "2",
+          "key": "e_1_3_2_41_1",
+          "first-page": "1",
+          "article-title": "Feminist historiography as methodology: The absence of international perspectives",
+          "volume": "5",
+          "author": "Petersen E. J.",
+          "year": "2017",
+          "unstructured": "Petersen, E. J. (2017). Feminist historiography as methodology: The absence of international perspectives. Connexions International Professional Communication Journal, 5(2), 1\u201338.",
+          "journal-title": "Connexions International Professional Communication Journal"
+        },
+        {
+          "key": "e_1_3_2_42_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2020.1768290"
+        },
+        {
+          "issue": "1",
+          "key": "e_1_3_2_43_1",
+          "article-title": "Indigenous women\u2019s voices in the colonial records of South Africa: Asking for permission",
+          "volume": "24",
+          "author": "Petersen E. J.",
+          "year": "2021",
+          "unstructured": "Petersen, E. J., & Matheson, B. (2021). Indigenous women\u2019s voices in the colonial records of South Africa: Asking for permission. Peitho, 24(1). https://cfshrc.org/article/indigenous-womens-voices-in-the-colonial-records-of-south-africa-asking-for-permission/",
+          "journal-title": "Peitho"
+        },
+        {
+          "issue": "4",
+          "key": "e_1_3_2_44_1",
+          "article-title": "The pepper manual: Towards situated non-western feminist rhetorical practices",
+          "volume": "23",
+          "author": "Plange E. F.",
+          "year": "2021",
+          "unstructured": "Plange, E. F. (2021). The pepper manual: Towards situated non-western feminist rhetorical practices. Peitho, 23(4). https://cfshrc.org/article/the-pepper-manual-towards-situated-non-western-feminist-rhetorical-practices/",
+          "journal-title": "Peitho"
+        },
+        {
+          "key": "e_1_3_2_45_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2022.2069288"
+        },
+        {
+          "key": "e_1_3_2_46_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2021.1915386"
+        },
+        {
+          "key": "e_1_3_2_47_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572252.2021.1906449"
+        },
+        {
+          "key": "e_1_3_2_48_1",
+          "volume-title": "Feminist rhetorical practices: New horizons for rhetoric, composition, and literacy studies",
+          "author": "Royster J. J.",
+          "year": "2012",
+          "unstructured": "Royster, J. J., & Kirsch, G. E. (2012). Feminist rhetorical practices: New horizons for rhetoric, composition, and literacy studies. SIU Press."
+        },
+        {
+          "issue": "1",
+          "key": "e_1_3_2_49_1",
+          "first-page": "27",
+          "article-title": "Shades of discrimination: The emergence of feminist art in apartheid South Africa",
+          "volume": "36",
+          "author": "Schmahmann B.",
+          "year": "2015",
+          "unstructured": "Schmahmann, B. (2015). Shades of discrimination: The emergence of feminist art in apartheid South Africa. Woman\u2019s Art Journal, 36(1), 27\u201336.",
+          "journal-title": "Woman\u2019s Art Journal"
+        },
+        {
+          "key": "e_1_3_2_50_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1080/10572259809364622"
+        },
+        {
+          "key": "e_1_3_2_51_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.2190/4JUC-8RAC-73H6-N57U"
+        },
+        {
+          "key": "e_1_3_2_52_1",
+          "unstructured": "Twidle H. (19 February 2021). Artist Sue Williamson explores South Africa\u2019s painful history. Financial times magazine. https://www.ft.com/content/379905a2-fb02-43eb-a979-77226c1fb10f"
+        },
+        {
+          "key": "e_1_3_2_53_1",
+          "doi-asserted-by": "publisher",
+          "DOI": "10.1145/2524248.2524257"
+        },
+        {
+          "key": "e_1_3_2_54_1",
+          "volume-title": "Moving for peace",
+          "author": "Williamson S.",
+          "year": "1981",
+          "unstructured": "Williamson, S. (1981, September 22). Moving for peace. The Argus."
+        }
+      ],
+      "container-title": [
+        "Technical Communication Quarterly"
+      ],
+      "language": "en",
+      "link": [
+        {
+          "URL": "https://www.tandfonline.com/doi/pdf/10.1080/10572252.2025.2469075",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ],
+      "deposited": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            23
+          ]
+        ],
+        "date-time": "2025-02-23T03:27:46Z",
+        "timestamp": 1740281266000
+      },
+      "score": 16.925753,
+      "resource": {
+        "primary": {
+          "URL": "https://www.tandfonline.com/doi/full/10.1080/10572252.2025.2469075"
+        }
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            22
+          ]
+        ]
+      },
+      "references-count": 53,
+      "alternative-id": [
+        "10.1080/10572252.2025.2469075"
+      ],
+      "URL": "https://doi.org/10.1080/10572252.2025.2469075",
+      "ISSN": [
+        "1057-2252",
+        "1542-7625"
+      ],
+      "issn-type": [
+        {
+          "value": "1057-2252",
+          "type": "print"
+        },
+        {
+          "value": "1542-7625",
+          "type": "electronic"
+        }
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            22
+          ]
+        ]
+      },
+      "assertion": [
+        {
+          "value": "The publishing and review policy for this title is described in its Aims & Scope.",
+          "order": 1,
+          "name": "peerreview_statement",
+          "label": "Peer Review Statement"
+        },
+        {
+          "value": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=htcq20",
+          "URL": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=htcq20",
+          "order": 2,
+          "name": "aims_and_scope_url",
+          "label": "Aim & Scope"
+        },
+        {
+          "value": "2025-02-22",
+          "order": 3,
+          "name": "published",
+          "label": "Published",
+          "group": {
+            "name": "publication_history",
+            "label": "Publication History"
+          }
+        }
+      ]
+    },
+    "apa": "January, Emily (2025). The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents. Technical Communication Quarterly, 1-17. https://doi.org/10.1080/10572252.2025.2469075",
+    "mla": "January, Emily. \"The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents.\" Technical Communication Quarterly, 2025, pp. 1-17. DOI: 10.1080/10572252.2025.2469075",
+    "chicago": "January, Emily. \"The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents.\" Technical Communication Quarterly (2025): 1-17. https://doi.org/10.1080/10572252.2025.2469075",
+    "bibtex": "@article{january2025,\n  author = {January, Emily},\n  title = {The Women\u2019s Movement for Peace: South African Instructional, Informational, and Activist Antiracist Documents},\n  journal = {Technical Communication Quarterly},\n  year = {2025},\n  pages = {1-17},\n  doi = {10.1080/10572252.2025.2469075},\n  publisher = {Informa UK Limited}\n}",
+    "context": " shaping this report. I also\nextend my sincere appreciation to the team at the Rajasthani nursery, Njafgargh where I\nundertook my internship from 5th January 2025 to 21st April 2025 , for allowing me to\nobserve, learn, and gain practical experience in nursery management practices. Lastly, I\nwould like to thank "
+  },
+  {
+    "doi": "10.1353/bcc.2025.a951802",
+    "title": "The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review)",
+    "authors": [
+      "Spisak, April"
+    ],
+    "journal": "Bulletin of the Center for Children's Books",
+    "publisher": "Project MUSE",
+    "year": 2025,
+    "volume": "78",
+    "issue": "7",
+    "pages": "257-258",
+    "url": "https://doi.org/10.1353/bcc.2025.a951802",
+    "type": "journal-article",
+    "raw_data": {
+      "indexed": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            12
+          ]
+        ],
+        "date-time": "2025-02-12T05:22:32Z",
+        "timestamp": 1739337752740,
+        "version": "3.37.0"
+      },
+      "reference-count": 0,
+      "publisher": "Project MUSE",
+      "issue": "7",
+      "content-domain": {
+        "domain": [],
+        "crossmark-restriction": false
+      },
+      "short-container-title": [
+        "bcc"
+      ],
+      "published-print": {
+        "date-parts": [
+          [
+            2025,
+            3
+          ]
+        ]
+      },
+      "DOI": "10.1353/bcc.2025.a951802",
+      "type": "journal-article",
+      "created": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            11
+          ]
+        ],
+        "date-time": "2025-02-11T10:11:55Z",
+        "timestamp": 1739268715000
+      },
+      "page": "257-258",
+      "source": "Crossref",
+      "is-referenced-by-count": 0,
+      "title": [
+        "The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review)"
+      ],
+      "prefix": "10.1353",
+      "volume": "78",
+      "author": [
+        {
+          "given": "April",
+          "family": "Spisak",
+          "sequence": "first",
+          "affiliation": []
+        }
+      ],
+      "member": "147",
+      "container-title": [
+        "Bulletin of the Center for Children's Books"
+      ],
+      "language": "en",
+      "deposited": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            11
+          ]
+        ],
+        "date-time": "2025-02-11T10:12:42Z",
+        "timestamp": 1739268762000
+      },
+      "score": 12.56791,
+      "resource": {
+        "primary": {
+          "URL": "https://muse.jhu.edu/article/951802"
+        }
+      },
+      "issued": {
+        "date-parts": [
+          [
+            2025,
+            3
+          ]
+        ]
+      },
+      "references-count": 0,
+      "journal-issue": {
+        "issue": "7",
+        "published-print": {
+          "date-parts": [
+            [
+              2025,
+              3
+            ]
+          ]
+        }
+      },
+      "URL": "https://doi.org/10.1353/bcc.2025.a951802",
+      "ISSN": [
+        "1558-6766"
+      ],
+      "issn-type": [
+        {
+          "value": "1558-6766",
+          "type": "electronic"
+        }
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            3
+          ]
+        ]
+      }
+    },
+    "apa": "Spisak, April (2025). The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review). Bulletin of the Center for Children's Books, 78(7), 257-258. https://doi.org/10.1353/bcc.2025.a951802",
+    "mla": "Spisak, April. \"The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review).\" Bulletin of the Center for Children's Books, vol. 78, no. 7, 2025, pp. 257-258. DOI: 10.1353/bcc.2025.a951802",
+    "chicago": "Spisak, April. \"The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review).\" Bulletin of the Center for Children's Books 78, no. 7 (2025): 257-258. https://doi.org/10.1353/bcc.2025.a951802",
+    "bibtex": "@article{spisak2025,\n  author = {Spisak, April},\n  title = {The Six\u2014Young Readers Edition: The Untold Story of America\u2019s First Women Astronauts by Loren Grush (review)},\n  journal = {Bulletin of the Center for Children's Books},\n  year = {2025},\n  volume = {78},\n  number = {7},\n  pages = {257-258},\n  doi = {10.1353/bcc.2025.a951802},\n  publisher = {Project MUSE}\n}",
+    "context": " I also\nextend my sincere appreciation to the team at the Rajasthani nursery, Njafgargh where I\nundertook my internship from 5th January 2025 to 21st April 2025 , for allowing me to\nobserve, learn, and gain practical experience in nursery management practices. Lastly, I\nwould like to thank my batchmates, frie"
+  }
+]

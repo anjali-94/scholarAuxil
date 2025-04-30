@@ -19,7 +19,7 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
             } else {
                 console.log('unauthorized');
                 setLoading(false);
-                navigate('/login')
+                navigate('/LandingPage')
             }
         });
         return () => unsubscribe();
@@ -32,3 +32,9 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
 }
 
 export default AuthRoute
+
+
+
+
+
+

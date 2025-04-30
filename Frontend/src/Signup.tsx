@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -13,6 +13,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [emailSent, setEmailSent] = useState(false); // State to track if email verification has been sent
 
     // Function to handle sign-up with Google
     const signUpWithGoogle = async () => {
@@ -40,12 +41,19 @@ const Signup = () => {
 
         setAuthing(true);
         setError('');
+        setEmailSent(false); // Reset email sent state
 
         // Use Firebase to create a new user with email and password
         createUserWithEmailAndPassword(auth, email, password)
-            .then(response => {
+            .then(async (response) => {
                 console.log(response.user.uid);
-                navigate('/');
+
+                // Send email verification after successful sign-up
+                await sendEmailVerification(response.user);
+                setEmailSent(true); // Update the state to show email verification message
+                
+                // Optionally navigate after email verification is sent
+                // navigate('/login'); 
             })
             .catch(error => {
                 console.log(error);
@@ -96,6 +104,8 @@ const Signup = () => {
 
                     {/* Display error message if there is one */}
                     {error && <div className='text-red-500 mb-4'>{error}</div>}
+                    {/* Display email verification message */}
+                    {emailSent && <div className='text-green-500 mb-4'>A verification email has been sent. Please check your inbox.</div>}
 
                     {/* Button to sign up with email and password */}
                     <div className='w-full flex flex-col mb-4'>

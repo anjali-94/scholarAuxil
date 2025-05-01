@@ -246,7 +246,7 @@ const LandingPage = () => {
             <li><a href="#about">About Us</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Contact Us</a></li>
             <li> <Link to="/Login">
               <CtaButton>Login</CtaButton>
             </Link></li>
@@ -270,7 +270,7 @@ const LandingPage = () => {
 
       <Section id="features">
         <SectionTitle>
-          <h2>Research Tools Designed for Scholars</h2>
+          <h2>Research Tools Especially Designed for Scholars</h2>
           <p>Everything you need to organize and accelerate your academic work</p>
         </SectionTitle>
 
@@ -394,27 +394,27 @@ const LandingPage = () => {
 // Mock Data
 const founders = [
   {
-    image: "https://randomuser.me/api/portraits/women/43.jpg",
-    name: "Dr. Sarah Chen",
-    title: "Computer Science Professor",
+    image: https://randomuser.me/api/portraits/lego/1.jpg",
+    name: "Anjali Sharma",
+    title: "Student, M.Sc Informatics",
     quote: "After years of struggling with research tools, I knew we could build something better."
   },
   {
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    name: "Dr. Michael Rodriguez",
-    title: "Research Methodology Expert",
+    image: "https://randomuser.me/api/portraits/lego/7.jpg",
+    name: "Bhumika Sharma",
+    title: "Student, M.Sc Informatics",
     quote: "We wanted to build a platform that actively enhances research quality."
   },
   {
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
-    name: "Dr. Priya Patel",
-    title: "Linguistics Researcher",
+    image: "https://randomuser.me/api/portraits/lego/8.jpg",
+    name: "Shivangi Negi",
+    title: "Student, M.Sc Informatics",
     quote: "Citation management shouldn't distract from actual research."
   },
   {
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-    name: "Dr. James Wilson",
-    title: "AI & Natural Language Processing",
+    image: "https://randomuser.me/api/portraits/lego/2.jpg",
+    name: "Loocina Nayak",
+    title: "Student, M.Sc Informatics",
     quote: "Our assistant leverages cutting-edge AI to provide helpful academic guidance."
   }
 ];

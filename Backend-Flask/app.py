@@ -12,6 +12,7 @@ import processingData as pdf_processor
 import get_citations
 import traceback
 import requests
+from plagiarism_checker import check_plagiarism 
 
 # Configure upload folder
 UPLOAD_FOLDER = 'uploads'
@@ -21,7 +22,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 CORS(app,origins=["http://localhost:5173"])  # Enable CORS for all routes to connect to frontend content sharing
-API_KEY = "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"
+API_KEY = "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"
 ALLOWED_EXTENSIONS = {'pdf', 'docx', 'png', 'jpg', 'jpeg'}
 
 # Create uploads directory if it doesn't exist
@@ -32,6 +33,12 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+def extract_text_from_pdf(filepath):
+    text = ""
+    doc = fitz.open(filepath)
+    for page in doc:
+        text += page.get_text()
+    return text
 
 def extract_text_from_docx(filepath):
     doc = docx.Document(filepath)
@@ -249,6 +256,55 @@ def extract_citations_api():
             "error": str(e),
             "details": error_details
         }), 500
+    
+@app.route('/plagiarism/check', methods=['POST'])
+def plagiarism_check():
+    try:
+        # Verify API key for security
+        if request.headers.get("x-api-key") != "5cb483dc-18ee-4861-8036-b746ea79d8e5":
+            return jsonify({"error": "Unauthorized"}), 401
+
+        # Check if file is uploaded
+        if 'file' not in request.files:
+            return jsonify({"error": "No file uploaded"}), 400
+
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({"error": "No selected file"}), 400
+
+        # Read the file content based on the file type
+        file_ext = file.filename.rsplit('.', 1)[1].lower()
+
+        if file_ext == 'pdf':
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
+            file.save(file_path)
+            file_content = extract_text_from_pdf(file_path)
+            os.remove(file_path)
+
+        elif file_ext == 'docx':
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
+            file.save(file_path)
+            file_content = extract_text_from_docx(file_path)
+            os.remove(file_path)
+
+        elif file_ext in {'png', 'jpg', 'jpeg'}:
+            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
+            file.save(file_path)
+            file_content = extract_text_from_image(file_path)
+            os.remove(file_path)
+
+        else:
+            file_content = file.read().decode('utf-8', errors='ignore')
+
+        # Call the plagiarism checker function
+        plagiarism_percentage = check_plagiarism(file_content)
+
+        # Return the plagiarism percentage
+        return jsonify({"plagiarism_percentage": plagiarism_percentage, "result": "Plagiarism check complete."})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

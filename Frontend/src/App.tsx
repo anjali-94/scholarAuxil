@@ -1,9 +1,10 @@
 import React from 'react';
-import Dashboard from './Dashboard'; // Adjust path if needed
+import Dashboard from './Dashboard';
 
 const App: React.FC = () => {
   return <Dashboard />;
 };
 
 export default App;
+
 

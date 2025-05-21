@@ -18,7 +18,6 @@ const ForgotPassword = () => {
     }
   }
 
-
   return (
     <div className='w-full flex flex-col items-center'>
       <h3 className='text-3xl text-white mb-4 mt-10'>Reset Password</h3>

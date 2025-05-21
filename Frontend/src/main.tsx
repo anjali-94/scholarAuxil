@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Login from './Login.tsx'
 import Signup from './Signup.tsx'
+import ProfilePage from './pages/ProfilePage.tsx'
 import LandingPage from './LandingPage.tsx'
 import './index.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
@@ -31,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/LandingPage" element={<LandingPage />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Router>
   </React.StrictMode>

@@ -3,7 +3,7 @@ import { FaGraduationCap, FaTasks, FaQuoteRight, FaRobot, FaChevronDown } from '
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-
+import ContactForm from './ContactForm';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
@@ -20,6 +20,32 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const NavLinks = styled.ul`
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+
+  li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 const Logo = styled.div`
@@ -30,18 +56,20 @@ const Logo = styled.div`
   gap: 10px;
 `;
 
-const NavLinks = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  align-items: center;
 
-  li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-  }
-`;
+
+// const NavLinks = styled.ul`
+//   list-style: none;
+//   display: flex;
+//   gap: 20px;
+//   align-items: center;
+
+//   li a {
+//     text-decoration: none;
+//     color: #333;
+//     font-weight: 500;
+//   }
+// `;
 
 const CtaButton = styled.button`
   background-color: #0077cc;
@@ -83,24 +111,15 @@ const MainCta = styled.button`
   cursor: pointer;
 `;
 
-const Section = styled.section`
-  padding: 80px 20px;
-  background: #fff;
-`;
+const StyledSwiper = styled(Swiper)`
+  padding-bottom: 40px;
 
-const SectionTitle = styled.div`
-  text-align: center;
-  margin-bottom: 50px;
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  p {
-    margin-top: 10px;
-    color: #666;
+  .swiper-pagination {
+    bottom: 10px !important;
+    text-align: center;
   }
 `;
+
 
 const FeaturesGrid = styled.div`
   display: flex;
@@ -197,31 +216,46 @@ const FaqItem = styled.div`
   }
 `;
 
+const Section = styled.section`
+  padding: 80px 20px;
+  background: #fff;
+`;
+
+const SectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 50px;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    margin-top: 10px;
+    color: #666;
+  }
+`;
+
 const ContactContainer = styled.div`
-  max-width: 600px;
+  min-width: 100%;
   margin: auto;
+  padding: 0 20px;
 `;
 
-const ContactForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+const ContactSectionTitle = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
 
-  input, textarea {
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
   }
 
-  button {
-    background: #0077cc;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+  p {
+    color: #666;
+    font-size: 1.1rem;
   }
 `;
+
 
 const Footer = styled.footer`
   background: #333;
@@ -303,7 +337,7 @@ const LandingPage = () => {
         </SectionTitle>
 
         <FoundersContainer>
-          <Swiper
+          <StyledSwiper
             modules={[Autoplay, Pagination]}
             spaceBetween={30}
             slidesPerView={1}
@@ -321,7 +355,7 @@ const LandingPage = () => {
                 </FounderCard>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </StyledSwiper>
         </FoundersContainer>
       </Section>
 
@@ -370,19 +404,15 @@ const LandingPage = () => {
 
       <Section id="contact">
         <ContactContainer>
-          <SectionTitle>
+          <ContactSectionTitle>
             <h2>Contact Our Team</h2>
             <p>Have questions or feedback? We're here to help</p>
-          </SectionTitle>
-
-          <ContactForm>
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows={6} required />
-            <button type="submit">Send Message</button>
-          </ContactForm>
+          </ContactSectionTitle>
+          <ContactForm />
         </ContactContainer>
       </Section>
+
+
 
       <Footer>
         <p>© 2025 ScholAuxil. All rights reserved.</p>

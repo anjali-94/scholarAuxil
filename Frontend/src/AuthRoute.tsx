@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import React, { useEffect, useState } from 'react'; 
+import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { auth } from './firebaseConfig'; // <-- import the initialized auth
 
 export interface IAuthRouteProps {
     children: React.ReactNode;
@@ -8,9 +9,8 @@ export interface IAuthRouteProps {
 
 const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
     const { children } = props;
-    const auth = getAuth();
     const navigate = useNavigate();
-    const [ loading, setLoading ] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -19,22 +19,18 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
             } else {
                 console.log('unauthorized');
                 setLoading(false);
-                navigate('/LandingPage')
+                navigate('/LandingPage');
             }
         });
         return () => unsubscribe();
-    }, [auth, navigate]);
+    }, [navigate]);
 
     if (loading) return <p></p>;
 
-    return <div>{ children }</div>;
+    return <div>{children}</div>;
+};
 
-}
-
-export default AuthRoute
-
-
-
+export default AuthRoute;
 
 
 

@@ -1,3 +1,4 @@
+// main.tsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
@@ -7,21 +8,8 @@ import ProfilePage from './pages/ProfilePage.tsx'
 import LandingPage from './LandingPage.tsx'
 import './index.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { initializeApp } from "firebase/app";
 import AuthRoute from './AuthRoute.tsx'
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBKGyqYJZ98u8lBCrdGF5cXAObq66qYLEs",
-  authDomain: "project-5a41c.firebaseapp.com",
-  projectId: "project-5a41c",
-  storageBucket: "project-5a41c.firebasestorage.app",
-  messagingSenderId: "117040046097",
-  appId: "1:117040046097:web:dc47ead025668987ef91b0",
-  measurementId: "G-R22X4P5NMB"
-};
-
-initializeApp(firebaseConfig);
+// Remove initializeApp from here — it's now in firebaseConfig.ts
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -31,28 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/LandingPage" element={<LandingPage />} />
-        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   </React.StrictMode>
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

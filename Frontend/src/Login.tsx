@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import ForgotPassword from './ForgotPassword';
-import { UserIcon } from '@heroicons/react/24/solid';
 
 const Login = () => {
     const auth = getAuth();
@@ -17,117 +21,118 @@ const Login = () => {
     const signInWithGoogle = async () => {
         setAuthing(true);
         signInWithPopup(auth, new GoogleAuthProvider())
-            .then(response => {
+            .then((response) => {
                 console.log(response.user.uid);
                 navigate('/');
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
                 setAuthing(false);
             });
-    }
+    };
 
     const signInWithEmail = async () => {
         setAuthing(true);
         setError('');
         signInWithEmailAndPassword(auth, email, password)
-            .then(response => {
+            .then((response) => {
                 console.log(response.user.uid);
                 navigate('/');
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
                 setError(error.message);
                 setAuthing(false);
             });
-    }
-
-    const handleForgotPassword = () => {
-        setShowForgotPassword(true);
-    }
+    };
 
     return (
-        <div className='w-full min-h-screen flex flex-col md:flex-row'>
+        <div className="min-h-screen flex flex-col md:flex-row">
             {/* Left Panel */}
-            <div className='w-full md:w-1/2 h-[300px] md:h-screen flex flex-col bg-[#282c34] items-center justify-center'>
-                <h1 className="text-white text-3xl font-semibold flex items-center gap-2">
-                    <UserIcon className="w-6 h-6 text-white" />
-                    Welcome Back!
-                </h1>
+            <div className="w-full md:w-1/2 h-60 md:h-screen bg-[#e0f2fe] flex flex-col">
+
+                {/* Bottom - Full Image */}
+                <div className="flex-grow flex justify-center items-center">
+                    <img src="/images/icons/Login.jpg" alt="Signup Illustration" className="h-full" />
+                </div>
             </div>
 
+
+
             {/* Right Panel */}
-            <div className='w-full md:w-1/2 h-auto md:h-screen bg-[#1a1a1a] flex flex-col p-6 sm:p-10 md:p-20 justify-center'>
-                <div className='w-full flex flex-col max-w-[450px] mx-auto'>
-                    <div className='w-full flex flex-col mb-6 text-white'>
-                        <h3 className='text-3xl md:text-4xl font-bold mb-2'>Login</h3>
-                        <p className='text-base md:text-lg mb-4'>Welcome Back! Please enter your details.</p>
-                    </div>
+            <div className="w-full md:w-1/2 flex items-center justify-center bg-white px-6 py-12 md:px-20">
+                <div className="w-full max-w-md">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-6">Login</h2>
 
                     {!showForgotPassword && (
                         <>
-                            <div className='w-full flex flex-col mb-6'>
-                                <input
-                                    type='email'
-                                    placeholder='Email'
-                                    className='w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white'
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)} />
-                                <input
-                                    type='password'
-                                    placeholder='Password'
-                                    className='w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white'
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)} />
-                            </div>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                autoComplete="email"
+                                className="mb-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                autoComplete="current-password"
+                                className="mb-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
 
-                            <div className='w-full flex flex-col mb-4'>
-                                <button
-                                    className='w-full bg-transparent border border-white text-white my-2 font-semibold rounded-md p-4 text-center flex items-center justify-center cursor-pointer'
-                                    onClick={signInWithEmail}
-                                    disabled={authing}>
-                                    Log In With Email and Password
-                                </button>
-                            </div>
+                            {error && <div className="text-red-500 mb-4">{error}</div>}
 
-                            {error && <div className='text-red-500 mb-4'>{error}</div>}
+                            <button
+                                onClick={signInWithEmail}
+                                disabled={authing}
+                                className="w-full py-3 mb-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                            >
+                                Log In With Email
+                            </button>
 
-                            <div className='w-full flex items-center justify-center relative py-4'>
-                                <div className='w-full h-[1px] bg-gray-500'></div>
-                                <p className='text-sm md:text-lg absolute text-gray-500 bg-[#1a1a1a] px-2'>OR</p>
+                            <div className="flex items-center my-4">
+                                <hr className="flex-grow border-gray-300" />
+                                <span className="mx-4 text-gray-500">OR</span>
+                                <hr className="flex-grow border-gray-300" />
                             </div>
 
                             <button
-                                className='w-full bg-white text-black font-semibold rounded-md p-4 text-center flex items-center justify-center cursor-pointer mt-5'
                                 onClick={signInWithGoogle}
-                                disabled={authing}>
-                                Log In With Google
+                                disabled={authing}
+                                className="w-full py-3 bg-gray-100 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-200 transition"
+                            >
+                                Continue with Google
                             </button>
 
-                            <div className='w-full text-center mt-4'>
+                            <div className="text-right mt-4">
                                 <button
-                                    onClick={handleForgotPassword}
-                                    className='text-blue-400'>
+                                    onClick={() => setShowForgotPassword(true)}
+                                    className="text-sm text-blue-600 hover:underline"
+                                >
                                     Forgot Password?
                                 </button>
                             </div>
 
-                            <div className='w-full flex items-center justify-center mt-8'>
-                                <p className='text-sm font-normal text-gray-400'>
-                                    Don't have an account? <span className='font-semibold text-white cursor-pointer underline'><a href='/signup'>Sign Up</a></span>
-                                </p>
-                            </div>
+                            <p className="text-center mt-6 text-gray-600">
+                                Don't have an account?{' '}
+                                <a
+                                    href="/signup"
+                                    className="text-blue-600 font-medium hover:underline"
+                                >
+                                    Sign up
+                                </a>
+                            </p>
                         </>
-
-
                     )}
 
-                    {/* Show Forgot Password Component */}
                     {showForgotPassword && <ForgotPassword />}
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Login;

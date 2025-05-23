@@ -1,86 +1,3 @@
-// import React from 'react';
-// import { Checkbox } from 'antd';
-
-// type Task = {
-//   id: number;
-//   text: string;
-//   completed: boolean;
-// };
-
-// type ResearchProgressProps = {
-//   tasks: Task[];
-//   handleTaskToggle: (id: number) => void;
-// };
-
-// const ResearchProgress: React.FC<ResearchProgressProps> = ({ tasks, handleTaskToggle }) => {
-//   return (
-//     <section
-//       style={{
-//         marginBottom: 'clamp(32px, 6vw, 64px)',
-//         background: '#f9fafb',
-//         padding: 'clamp(16px, 4vw, 32px)',
-//         borderRadius: '12px',
-//         boxSizing: 'border-box',
-//       }}
-//     >
-//       <h2
-//         style={{
-//           textAlign: 'center',
-//           color: '#2563eb',
-//           fontWeight: 700,
-//           fontSize: 'clamp(20px, 5vw, 28px)',
-//           marginBottom: 'clamp(16px, 4vw, 24px)',
-//         }}
-//       >
-//         Research Paper Progress
-//       </h2>
-//       {tasks.map((task) => (
-//         <div
-//           key={task.id}
-//           style={{
-//             display: 'flex',
-//             alignItems: 'center',
-//             marginBottom: 'clamp(12px, 3vw, 20px)',
-//             flexWrap: 'nowrap',
-//           }}
-//         >
-//           <Checkbox
-//             checked={task.completed}
-//             onChange={() => handleTaskToggle(task.id)}
-//             style={{ transform: 'scale(1.4)', marginRight: '16px' }}
-//           />
-//           <span
-//             style={{
-//               fontSize: 'clamp(18px, 6vw, 20px)',
-//               fontWeight: 600,
-//               color: task.completed ? '#9ca3af' : '#1f2937',
-//               textDecoration: task.completed ? 'line-through' : 'none',
-//               wordBreak: 'break-word',
-//             }}
-//           >
-//             {task.text}
-//           </span>
-//         </div>
-//       ))}
-//     </section>
-//   );
-// };
-
-// export default ResearchProgress;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import { Checkbox, Progress, Button, Input, Radio } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
@@ -177,6 +94,7 @@ const ResearchProgress: React.FC<ResearchProgressProps> = ({
             transition: 'all 0.2s ease-in-out',
           }}
         >
+          
           <Checkbox
             checked={task.completed}
             onChange={() => handleTaskToggle(task.id)}
@@ -194,6 +112,7 @@ const ResearchProgress: React.FC<ResearchProgressProps> = ({
             {task.text}
           </span>
         </div>
+        
       ))}
 
       {handleAddTask && (

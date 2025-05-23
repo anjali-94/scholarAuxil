@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Layout } from 'antd';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +11,11 @@ import ResearchProgress from './DashboardWrapper/ResearchProgress';
 import CustomTodo from './DashboardWrapper/CustomTodo';
 import Repository from './DashboardWrapper/Repository';
 import PlagiarismChecker from './PlagiarismChecker';
-
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from './firebaseConfig'; 
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebaseConfig'; 
+import { motion } from 'framer-motion';
 
 const { Content } = Layout;
 
@@ -20,6 +24,16 @@ type Task = {
   text: string;
   completed: boolean;
 };
+
+type CustomTask = {
+   text: string;
+  start: string;
+  deadline: string;
+  completed: boolean;
+  alerted?: boolean;
+};
+
+ 
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -42,26 +56,60 @@ const Dashboard: React.FC = () => {
 
   const [customTask, setCustomTask] = useState('');
   const [customDate, setCustomDate] = useState<moment.Moment | null>(null);
-  const [customTasks, setCustomTasks] = useState<
-    { text: string; date: string; completed: boolean }[]
-  >([]);
+  const [customTasks, setCustomTasks] = useState<CustomTask[]>([]);
+
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const docRef = doc(db, 'users', user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        if (data.tasks) {
+          setTasks(data.tasks);
+        }
+        if (data.customTasks) {
+          setCustomTasks(data.customTasks);
+          localStorage.setItem('customTasks', JSON.stringify(data.customTasks));
+        }
+      }
+    }
+  });
+
+  return () => unsubscribe();
+}, []);
+
 
   const handleLogout = () => navigate('/LandingPage');
 
-  const handleTaskToggle = (id: number) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id ? { ...task, completed: !task.completed } : task,
-      ),
-    );
-  };
+  const handleTaskToggle = async (id: number) => {
+  const updatedTasks = tasks.map(task =>
+    task.id === id ? { ...task, completed: !task.completed } : task
+  );
+  setTasks(updatedTasks);
 
-  const handleAddTask = (text: string) => {
-    setTasks(prev => [
-      ...prev,
-      { id: Date.now(), text, completed: false },
-    ]);
-  };
+  const user = auth.currentUser;
+  if (user) {
+    await setDoc(doc(db, 'users', user.uid), {
+      tasks: updatedTasks
+    }, { merge: true });
+  }
+};
+
+
+  const handleAddTask = async (text: string) => {
+  const newTask = { id: Date.now(), text, completed: false };
+  const updatedTasks = [...tasks, newTask];
+  setTasks(updatedTasks);
+
+  const user = auth.currentUser;
+  if (user) {
+    await setDoc(doc(db, 'users', user.uid), {
+      tasks: updatedTasks
+    }, { merge: true });
+  }
+};
+
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -78,7 +126,10 @@ const Dashboard: React.FC = () => {
         <HeaderBar collapsed={collapsed} setCollapsed={setCollapsed} logout={handleLogout} />
 
         <Content style={{ margin: '24px' }}>
-          <div
+           <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             style={{
               background: '#ffffff',
               padding: 'clamp(24px, 5vw, 48px) clamp(16px, 5vw, 32px)',
@@ -88,7 +139,10 @@ const Dashboard: React.FC = () => {
               boxSizing: 'border-box',
             }}
           >
-            <h1
+             <motion.h1
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               style={{
                 textAlign: 'center',
                 color: '#2563eb',
@@ -98,7 +152,7 @@ const Dashboard: React.FC = () => {
               }}
             >
               Research Dashboard
-            </h1>
+            </motion.h1>
 
             {showRepository ? (
               <Repository />
@@ -116,6 +170,7 @@ const Dashboard: React.FC = () => {
                   tasks={tasks}
                   handleTaskToggle={handleTaskToggle}
                   handleAddTask={handleAddTask}
+                 
                 />
 
                 <CustomTodo
@@ -128,7 +183,7 @@ const Dashboard: React.FC = () => {
                 />
               </>
             )}
-          </div>
+          </motion.div>
         </Content>
       </Layout>
 

@@ -180,7 +180,7 @@ const AskPromptDrawer: React.FC<AskPromptDrawerProps> = ({
               <div style={{ marginBottom: 15, display: 'flex', justifyContent: 'center' }}>
                 <img
                   style={{ height: 120, width: 125 }}
-                  src="/images/sparkle.png"
+                  src="/images/icons/sparkle.png"
                   alt="sparkle"
                 />
               </div>

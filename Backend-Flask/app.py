@@ -1,4 +1,3 @@
-# app.py with improved debugging
 from flask import Flask, jsonify, request, render_template, redirect, url_for
 from flask_cors import CORS
 import os
@@ -13,42 +12,23 @@ import get_citations
 import traceback
 import requests
 from plagiarism_checker import check_plagiarism 
+from utils.file_extractor import extract_text_from_pdf, extract_text_from_docx, extract_text_from_image, allowed_file
+from dotenv import load_dotenv
+load_dotenv()
 
-# Configure upload folder
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'pdf'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-CORS(app,origins=["http://localhost:5173"])  # Enable CORS for all routes to connect to frontend content sharing
-API_KEY = "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"
-ALLOWED_EXTENSIONS = {'pdf', 'docx', 'png', 'jpg', 'jpeg'}
+CORS(app,origins=["http://localhost:5173"]) 
 
-# Create uploads directory if it doesn't exist
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def extract_text_from_pdf(filepath):
-    text = ""
-    doc = fitz.open(filepath)
-    for page in doc:
-        text += page.get_text()
-    return text
-
-def extract_text_from_docx(filepath):
-    doc = docx.Document(filepath)
-    return "\n".join([para.text for para in doc.paragraphs])
-
-def extract_text_from_image(filepath):
-    reader = easyocr.Reader(['en'])  # Language code, e.g., 'en' for English
-    result = reader.readtext(filepath)
-    return "\n".join([text[1] for text in result])
-
 
 @app.route('/')
 def home():
@@ -178,7 +158,6 @@ def upload_citation_file():
     return jsonify({"error": "File type not allowed"}), 400
 
 # chatbot file upload 
-
 @app.route('/api/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -217,7 +196,6 @@ def upload_file():
             return jsonify({'error': f'Failed to process file: {str(e)}'}), 500
     else:
         return jsonify({'error': 'File type not allowed'}), 400
-
 
 
 @app.route('/api/extract-citations', methods=['POST'])
@@ -296,15 +274,47 @@ def plagiarism_check():
         else:
             file_content = file.read().decode('utf-8', errors='ignore')
 
-        # Call the plagiarism checker function
         plagiarism_percentage = check_plagiarism(file_content)
 
-        # Return the plagiarism percentage
         return jsonify({"plagiarism_percentage": plagiarism_percentage, "result": "Plagiarism check complete."})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,155 +1,138 @@
 import { useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 const Signup = () => {
-    // Initialize Firebase authentication and navigation
-    const auth = getAuth();
-    const navigate = useNavigate();
+  const auth = getAuth();
+  const navigate = useNavigate();
 
-    // State variables for managing authentication state, email, password, confirm password, and error messages
-    const [authing, setAuthing] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
-    const [emailSent, setEmailSent] = useState(false); // State to track if email verification has been sent
+  const [authing, setAuthing] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
 
-    // Function to handle sign-up with Google
-    const signUpWithGoogle = async () => {
-        setAuthing(true);
+  const signUpWithGoogle = async () => {
+    setAuthing(true);
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((response) => {
+        console.log(response.user.uid);
+        navigate('/login');
+      })
+      .catch((error) => {
+        console.log(error);
+        setAuthing(false);
+      });
+  };
 
-        // Use Firebase to sign up with Google
-        signInWithPopup(auth, new GoogleAuthProvider())
-            .then(response => {
-                console.log(response.user.uid);
-                navigate('/login');
-            })
-            .catch(error => {
-                console.log(error);
-                setAuthing(false);
-            });
-    };
+  const signUpWithEmail = async () => {
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
 
-    // Function to handle sign-up with email and password
-    const signUpWithEmail = async () => {
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            setError('Passwords do not match');
-            return;
-        }
+    setAuthing(true);
+    setError('');
+    setEmailSent(false);
 
-        setAuthing(true);
-        setError('');
-        setEmailSent(false); // Reset email sent state
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (response) => {
+        await sendEmailVerification(response.user);
+        setEmailSent(true);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setAuthing(false);
+      });
+  };
 
-        // Use Firebase to create a new user with email and password
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(async (response) => {
-                console.log(response.user.uid);
+  return (
+    <div className="min-h-screen flex flex-col md:flex-row">
+       {/* Left Panel */}
+            <div className="w-full md:w-1/2 h-60 md:h-screen bg-[#e0f2fe] flex flex-col">
 
-                // Send email verification after successful sign-up
-                await sendEmailVerification(response.user);
-                setEmailSent(true); // Update the state to show email verification message
-
-                // Optionally navigate after email verification is sent
-                // navigate('/login'); 
-            })
-            .catch(error => {
-                console.log(error);
-                setError(error.message);
-                setAuthing(false);
-            });
-    };
-
-    return (
-        <div className='w-full min-h-screen flex flex-col md:flex-row'>
-            <div className='w-full md:w-1/2 h-[300px] md:h-screen flex flex-col bg-[#282c34] items-center justify-center'>
-                <h1 className="text-white text-3xl font-semibold flex items-center gap-2">
-                    Get Started
-                    <ArrowRightIcon className="w-6 h-6 text-white" />
-                </h1>
-
-            </div>
-
-            {/* Right half - signup form */}
-            <div className='w-full md:w-1/2 h-full bg-[#1a1a1a] flex flex-col p-6 md:p-20 justify-center'>
-                <div className='w-full flex flex-col max-w-[450px] mx-auto'>
-
-                    {/* Header section */}
-                    <div className='w-full flex flex-col mb-10 text-white'>
-                        <h3 className='text-3xl md:text-4xl font-bold mb-2'>Sign Up</h3>
-                        <p className='text-base md:text-lg mb-4'>Welcome! Please enter your information below to begin.</p>
-                    </div>
-
-                    {/* Input fields */}
-                    <div className='w-full flex flex-col mb-6'>
-                        <input
-                            type='email'
-                            placeholder='Email'
-                            className='w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <input
-                            type='password'
-                            placeholder='Password'
-                            className='w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <input
-                            type='password'
-                            placeholder='Re-Enter Password'
-                            className='w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none focus:border-white'
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
-                    </div>
-
-                    {/* Feedback messages */}
-                    {error && <div className='text-red-500 mb-4'>{error}</div>}
-                    {emailSent && <div className='text-green-500 mb-4'>A verification email has been sent. Please check your inbox.</div>}
-
-                    {/* Email signup button */}
-                    <div className='w-full flex flex-col mb-4'>
-                        <button
-                            onClick={signUpWithEmail}
-                            disabled={authing}
-                            className='w-full bg-transparent border border-white text-white my-2 font-semibold rounded-md p-4 text-center flex items-center justify-center cursor-pointer'>
-                            Sign Up With Email and Password
-                        </button>
-                    </div>
-
-                    {/* Divider */}
-                    <div className='w-full flex items-center justify-center relative py-4'>
-                        <div className='w-full h-[1px] bg-gray-500'></div>
-                        <p className='text-sm md:text-lg absolute text-gray-500 bg-[#1a1a1a] px-2'>OR</p>
-                    </div>
-
-                    {/* Google signup */}
-                    <button
-                        onClick={signUpWithGoogle}
-                        disabled={authing}
-                        className='w-full bg-white text-black font-semibold rounded-md p-4 text-center flex items-center justify-center cursor-pointer mt-5'>
-                        Sign Up With Google
-                    </button>
-                </div>
-
-                {/* Link to login */}
-                <div className='w-full flex items-center justify-center mt-10'>
-                    <p className='text-sm font-normal text-gray-400'>
-                        Already have an account?
-                        <span className='font-semibold text-white cursor-pointer underline ml-1'>
-                            <a href='/login'>Log In</a>
-                        </span>
-                    </p>
+                {/* Bottom - Full Image */}
+                <div className="flex-grow flex justify-center items-center">
+                    <img src="/images/icons/Signup.jpg" alt="Signup Illustration" className="h-full" />
                 </div>
             </div>
+
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-white px-6 py-12 md:px-20">
+        <div className="w-full max-w-md">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Sign Up</h2>
+
+          <input
+            type="email"
+            placeholder="Email"
+            autoComplete="email"
+            className="mb-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="mb-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Re-enter Password"
+            className="mb-4 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          {emailSent && (
+            <div className="text-green-500 mb-4">
+              Verification email sent! Please check your inbox.
+            </div>
+          )}
+
+          <button
+            onClick={signUpWithEmail}
+            disabled={authing}
+            className="w-full py-3 mb-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+          >
+            Sign Up with Email
+          </button>
+
+          <div className="flex items-center my-4">
+            <hr className="flex-grow border-gray-300" />
+            <span className="mx-4 text-gray-500">OR</span>
+            <hr className="flex-grow border-gray-300" />
+          </div>
+
+          <button
+            onClick={signUpWithGoogle}
+            disabled={authing}
+            className="w-full py-3 bg-gray-100 text-gray-700 border border-gray-300 rounded-md hover:bg-gray-200 transition"
+          >
+            Continue with Google
+          </button>
+
+          <p className="text-center mt-6 text-gray-600">
+            Already have an account?{' '}
+            <a
+              href="/login"
+              className="text-blue-600 font-medium hover:underline"
+            >
+              Log in
+            </a>
+          </p>
         </div>
-
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default Signup;

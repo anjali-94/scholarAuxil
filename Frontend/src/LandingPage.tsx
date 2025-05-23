@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import { FaGraduationCap, FaTasks, FaQuoteRight, FaRobot, FaChevronDown } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
 import ContactForm from './ContactForm';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-
+import { motion } from 'framer-motion';
 
 // Styled Components
 const Header = styled.header`
@@ -81,7 +79,7 @@ const CtaButton = styled.button`
 `;
 
 const Hero = styled.section`
-  background: #f0f4f8;
+  background: #e0f2fe;
   padding: 80px 20px;
   text-align: center;
 `;
@@ -111,16 +109,6 @@ const MainCta = styled.button`
   cursor: pointer;
 `;
 
-const StyledSwiper = styled(Swiper)`
-  padding-bottom: 40px;
-
-  .swiper-pagination {
-    bottom: 10px !important;
-    text-align: center;
-  }
-`;
-
-
 const FeaturesGrid = styled.div`
   display: flex;
   justify-content: center;
@@ -128,49 +116,6 @@ const FeaturesGrid = styled.div`
   gap: 30px;
 `;
 
-const FeatureCard = styled.div`
-  background: #f9f9f9;
-  padding: 30px;
-  width: 300px;
-  border-radius: 8px;
-  text-align: center;
-
-  h3 {
-    margin-top: 20px;
-  }
-
-  p {
-    margin-top: 10px;
-    color: #555;
-  }
-`;
-
-const FoundersContainer = styled.div`
-  display: flex;
-  transition: transform 0.5s ease;
-  padding-bottom: 2rem;
-`;
-
-
-const FounderCard = styled.div`
-  min-width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-`;
-
-
-const FounderImage = styled.img`
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid var(--accent);
-  margin-bottom: 1.5rem;
-`;
 
 const StepsContainer = styled.div`
   max-width: 900px;
@@ -216,6 +161,25 @@ const FaqItem = styled.div`
   }
 `;
 
+const faqVariants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 30,
+    x: i % 2 === 0 ? -50 : 50, // Alternate left/right
+  }),
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+};
+
+
 const Section = styled.section`
   padding: 80px 20px;
   background: #fff;
@@ -256,7 +220,6 @@ const ContactSectionTitle = styled.div`
   }
 `;
 
-
 const Footer = styled.footer`
   background: #333;
   color: white;
@@ -264,152 +227,246 @@ const Footer = styled.footer`
   text-align: center;
 `;
 
-
 // Main Component
 const LandingPage = () => {
   return (
     <>
       <Header>
         <Nav>
-          <Logo>
-            <FaGraduationCap />
-            <span>ScholAuxil</span>
-          </Logo>
-          <NavLinks>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li> <Link to="/Login">
-              <CtaButton>Login</CtaButton>
-            </Link></li>
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Logo>
+              <FaGraduationCap />
+              <span>ScholAuxil</span>
+            </Logo>
+          </motion.div>
 
-
-
-
-          </NavLinks>
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <NavLinks>
+              <li><a href="#features">Features</a></li>
+              {/* <li><a href="#about">About Us</a></li> */}
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li>
+                <Link to="/Login">
+                  <CtaButton>Login</CtaButton>
+                </Link>
+              </li>
+            </NavLinks>
+          </motion.div>
         </Nav>
+
       </Header>
 
       <Hero>
-        <HeroContent>
-          <h1>Revolutionizing Academic Research</h1>
-          <p>ScholAuxil combines powerful tools with intelligent assistance to streamline your research workflow.</p>
-          <Link to="/Signup">
-            <MainCta>Get Started</MainCta>
-          </Link>
-        </HeroContent>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          whileInView={{ y: 0, opacity: 1 }}
+        >
+          <HeroContent>
+
+            <h1>Revolutionizing Academic Research</h1>
+            <p>ScholAuxil combines powerful tools with intelligent assistance to streamline your research workflow.</p>
+            <Link to="/Signup">
+              <MainCta>Get Started</MainCta>
+            </Link>
+          </HeroContent>
+        </motion.div>
       </Hero>
 
+
       <Section id="features">
-        <SectionTitle>
-          <h2>Research Tools Designed for Scholars</h2>
-          <p>Everything you need to organize and accelerate your academic work</p>
-        </SectionTitle>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <SectionTitle>
+            <h2>Research Tools Designed for Scholars</h2>
+            <p>Everything you need to organize and accelerate your academic work</p>
+          </SectionTitle>
+        </motion.div>
 
         <FeaturesGrid>
-          <FeatureCard>
-            <FaTasks size={40} />
-            <h3>Smart To-Do List</h3>
-            <p>Prioritize and track your research milestones with our intelligent task manager.</p>
-          </FeatureCard>
+  <motion.div
+    initial={{ x: -100, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.6, delay: 0.1 }}
+    viewport={{ once: true }}
+    style={{
+      background: '#E5E7EB', // light grey background
+      color: '#0F172A', // dark slate text
+      borderRadius: '16px',
+      padding: '35px',
+      width: '300px',
+      textAlign: 'center',
+      boxShadow: '0 6px 16px rgba(56, 189, 248, 0.15)' // sky blue soft shadow
+    }}
+  >
+    <FaTasks size={40} color="#38BDF8" />
+    <h3 style={{ marginTop: '16px', fontSize: '20px', fontWeight: '700' }}>Smart To-Do List</h3>
+    <p style={{ color: '#6B7280', marginTop: '8px' }}>
+      Prioritize and track your research milestones with our intelligent task manager.
+    </p>
+  </motion.div>
 
-          <FeatureCard>
-            <FaQuoteRight size={40} />
-            <h3>Citation Creator</h3>
-            <p>Generate flawless citations in any style with support for various sources.</p>
-          </FeatureCard>
+  <motion.div
+    initial={{ y: 100, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+    viewport={{ once: true }}
+    style={{
+      background: '#E5E7EB',
+      color: '#0F172A',
+      borderRadius: '16px',
+      padding: '35px',
+      width: '300px',
+      textAlign: 'center',
+      boxShadow: '0 6px 16px rgba(56, 189, 248, 0.15)'
+    }}
+  >
+    <FaQuoteRight size={40} color="#38BDF8" />
+    <h3 style={{ marginTop: '16px', fontSize: '20px', fontWeight: '700' }}>Citation Creator</h3>
+    <p style={{ color: '#6B7280', marginTop: '8px' }}>
+      Generate flawless citations in any style with support for various sources.
+    </p>
+  </motion.div>
 
-          <FeatureCard>
-            <FaRobot size={40} />
-            <h3>Research Assistant</h3>
-            <p>Refine research questions, suggest methodologies, and recommend literature.</p>
-          </FeatureCard>
-        </FeaturesGrid>
+  <motion.div
+    initial={{ x: 100, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.6, delay: 0.3 }}
+    viewport={{ once: true }}
+    style={{
+      background: '#E5E7EB',
+      color: '#0F172A',
+      borderRadius: '16px',
+      padding: '35px',
+      width: '300px',
+      textAlign: 'center',
+      boxShadow: '0 6px 16px rgba(56, 189, 248, 0.15)'
+    }}
+  >
+    <FaRobot size={40} color="#38BDF8" />
+    <h3 style={{ marginTop: '16px', fontSize: '20px', fontWeight: '700' }}>Research Assistant</h3>
+    <p style={{ color: '#6B7280', marginTop: '8px' }}>
+      Refine research questions, suggest methodologies, and recommend literature.
+    </p>
+  </motion.div>
+</FeaturesGrid>
+
+
       </Section>
-
-
-      <Section id="about" style={{ backgroundColor: "#f0f4f8" }}>
-        <SectionTitle>
-          <h2>Meet The Founders</h2>
-          <p>The academic minds behind ScholAuxil</p>
-        </SectionTitle>
-
-        <FoundersContainer>
-          <StyledSwiper
-            modules={[Autoplay, Pagination]}
-            spaceBetween={30}
-            slidesPerView={1}
-            loop={true}
-            autoplay={{ delay: 3000 }}
-            pagination={{ clickable: true }}
-          >
-            {founders.map((founder, index) => (
-              <SwiperSlide key={index}>
-                <FounderCard>
-                  <FounderImage className="founder-image" src={founder.image} alt={founder.name} />
-                  <h3>{founder.name}</h3>
-                  <p>{founder.title}</p>
-                  <p>{founder.quote}</p>
-                </FounderCard>
-              </SwiperSlide>
-            ))}
-          </StyledSwiper>
-        </FoundersContainer>
-      </Section>
-
 
       <Section id="how-it-works">
+
         <SectionTitle>
-          <h2>How ScholAuxil Works</h2>
-          <p>Simple steps to transform your research process</p>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.6 }}
+          >
+            <h2>How ScholAuxil Works</h2>
+            <p>Simple steps to transform your research process</p>
+          </motion.div>
         </SectionTitle>
+
 
         <StepsContainer>
           {steps.map((step, index) => (
-            <Step key={index}>
-              <div className="step-number">{index + 1}</div>
-              <div className="step-content">
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            </Step>
+            <motion.div
+              key={index}
+              initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <Step>
+                <div className="step-number">{index + 1}</div>
+                <div className="step-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              </Step>
+            </motion.div>
           ))}
         </StepsContainer>
+
       </Section>
 
       <Section id="faq" style={{
         backgroundColor: "#f0f4f8"
       }}>
         <SectionTitle>
-          <h2>Frequently Asked Questions</h2>
-          <p>Everything you need to know about ScholAuxil</p>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.6 }}
+          >
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about ScholAuxil</p>
+          </motion.div>
         </SectionTitle>
 
         <div>
           {faqItems.map((faq, index) => (
-            <FaqItem key={index}>
-              <div className="faq-question">
-                <span>{faq.question}</span>
-                <FaChevronDown />
-              </div>
-              <div className="faq-answer">
-                <p>{faq.answer}</p>
-              </div>
-            </FaqItem>
+            <motion.div
+              key={index}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={faqVariants}
+            >
+              <FaqItem key={index}>
+                <div className="faq-question">
+                  <span>{faq.question}</span>
+                  <FaChevronDown />
+                </div>
+                <div className="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              </FaqItem>
+            </motion.div>
           ))}
         </div>
       </Section>
 
       <Section id="contact">
         <ContactContainer>
-          <ContactSectionTitle>
-            <h2>Contact Our Team</h2>
-            <p>Have questions or feedback? We're here to help</p>
-          </ContactSectionTitle>
-          <ContactForm />
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.6 }}
+          >
+            <ContactSectionTitle>
+              <h2>Contact Our Team</h2>
+              <p>Have questions or feedback? We're here to help</p>
+            </ContactSectionTitle>
+          </motion.div>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.6 }}
+          >
+            <ContactForm />
+          </motion.div>
         </ContactContainer>
+
       </Section>
 
 
@@ -421,34 +478,8 @@ const LandingPage = () => {
   );
 };
 
-// Mock Data
-const founders = [
-  {
-    image: "https://randomuser.me/api/portraits/women/43.jpg",
-    name: "Dr. Sarah Chen",
-    title: "Computer Science Professor",
-    quote: "After years of struggling with research tools, I knew we could build something better."
-  },
-  {
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
-    name: "Dr. Michael Rodriguez",
-    title: "Research Methodology Expert",
-    quote: "We wanted to build a platform that actively enhances research quality."
-  },
-  {
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
-    name: "Dr. Priya Patel",
-    title: "Linguistics Researcher",
-    quote: "Citation management shouldn't distract from actual research."
-  },
-  {
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
-    name: "Dr. James Wilson",
-    title: "AI & Natural Language Processing",
-    quote: "Our assistant leverages cutting-edge AI to provide helpful academic guidance."
-  }
-];
 
+//Mock Data
 const steps = [
   { title: "Create Your Academic Profile", description: "Personalize ScholAuxil tools to your specific needs." },
   { title: "Organize Your Projects", description: "Break projects into manageable tasks with suggested timelines." },
@@ -464,3 +495,37 @@ const faqItems = [
 ];
 
 export default LandingPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

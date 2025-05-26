@@ -7,6 +7,7 @@ import AskPromptDrawer from './AskPromptDrawer';
 import NavigationSider from './DashboardWrapper/NavigationSider';
 import HeaderBar from './DashboardWrapper/HeaderBar';
 import UploadSection, { Citation } from './DashboardWrapper/UploadSection';
+import BibifyClone from './DashboardWrapper/biblify_citation';
 import ResearchProgress from './DashboardWrapper/ResearchProgress';
 import CustomTodo from './DashboardWrapper/CustomTodo';
 import Repository from './DashboardWrapper/Repository';
@@ -41,6 +42,7 @@ const Dashboard: React.FC = () => {
   const [showBot, setShowBot] = useState(false);
   const [showPlagiarismChecker, setShowPlagiarismChecker] = useState(false);
   const [showRepository, setShowRepository] = useState(false);
+  const [showBibCitation,setShowBibCitation] = useState(false);
   const [citations, setCitations] =
 
     useState<Citation[]>([]);
@@ -96,6 +98,13 @@ useEffect(() => {
   }
 };
 
+   const getDashboardHeading = () => {
+    if (showRepository) return 'Repository';
+    if (showPlagiarismChecker) return 'Plagiarism Checker';
+    if (showBibCitation) return 'Citation Generator';
+    return 'Research Dashboard';
+  };
+
 
   const handleAddTask = async (text: string) => {
   const newTask = { id: Date.now(), text, completed: false };
@@ -120,6 +129,7 @@ useEffect(() => {
         setShowPlagiarismChecker={setShowPlagiarismChecker}
         setShowRepository={setShowRepository}
         handleLogout={handleLogout}
+        setShowBibciteGenerator = {setShowBibCitation}
       />
 
       <Layout>
@@ -151,14 +161,16 @@ useEffect(() => {
                 marginBottom: 'clamp(20px, 4vw, 40px)',
               }}
             >
-              Research Dashboard
+              {getDashboardHeading()}
             </motion.h1>
 
             {showRepository ? (
               <Repository />
             ) : showPlagiarismChecker ? (
               <PlagiarismChecker />
-            ) : (
+            ) : showBibCitation?(
+              <BibifyClone/>
+            ):(
               <>
                 <UploadSection
                   citations={citations}

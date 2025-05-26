@@ -11,6 +11,7 @@ type NavigationSiderProps = {
   setShowPlagiarismChecker: (show: boolean) => void;
   setShowRepository: (show: boolean) => void;
   handleLogout: () => void;
+  setShowBibciteGenerator: (show: boolean) => void;
 };
 
 const NavigationSider: React.FC<NavigationSiderProps> = ({
@@ -20,6 +21,7 @@ const NavigationSider: React.FC<NavigationSiderProps> = ({
   setShowPlagiarismChecker,
   setShowRepository,
   handleLogout,
+  setShowBibciteGenerator,
 }) => {
   return (
     <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
@@ -32,6 +34,8 @@ const NavigationSider: React.FC<NavigationSiderProps> = ({
             setShowPlagiarismChecker(false);
             setShowBot(false);
             setShowRepository(false);
+            setShowBibciteGenerator(false);
+
           }}
         >
           Home
@@ -46,6 +50,8 @@ const NavigationSider: React.FC<NavigationSiderProps> = ({
             setShowPlagiarismChecker(true);
             setShowRepository(false);
             setShowBot(false);
+            setShowBibciteGenerator(false);
+
           }}
         >
           Plagiarism Checker
@@ -56,14 +62,29 @@ const NavigationSider: React.FC<NavigationSiderProps> = ({
           onClick={() => {
             setShowBot(false);
             setShowPlagiarismChecker(false);
+            setShowRepository(false);
+            setShowBibciteGenerator(true);
+          }}
+        >
+          Citation Generator
+        </Menu.Item>
+        <Menu.Item
+          key="5"
+          icon={<PlusOutlined />}
+          onClick={() => {
+            setShowBot(false);
+            setShowPlagiarismChecker(false);
             setShowRepository(true);
+            setShowBibciteGenerator(false);
+
           }}
         >
           Repository
         </Menu.Item>
-        <Menu.Item key="5" icon={<LogoutOutlined />} onClick={handleLogout}>
+        <Menu.Item key="6" icon={<LogoutOutlined />} onClick={handleLogout}>
           Logout
         </Menu.Item>
+
       </Menu>
     </Sider>
   );

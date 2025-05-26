@@ -16,7 +16,7 @@ export default function NewRepository() {
     }
 
     try {
-      const newRepo = await createRepository(name);
+      // const newRepo = await createRepository(name);
       showMessage(`Repository "${name}" created successfully!`, 'success');
       navigate('/repository');
     } catch (error) {

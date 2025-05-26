@@ -22,7 +22,7 @@ export default function Repository() {
   const [notes, setNotes] = useState('');
   const [lastPageSeen, setLastPageSeen] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const { message, type, showMessage, clearMessage } = useFlashMessage();
+  // const { message, type, showMessage, clearMessage } = useFlashMessage();
 
   // Determine view based on URL parameters
   useEffect(() => {

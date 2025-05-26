@@ -61,3 +61,7 @@ def pseudo_plagiarism_estimate(query):
     probability = (hash_val % 100) / 100.0  
     print(f"Simulated plagiarism check for '{query}': Probability {probability}")
     return probability > 0.5 
+
+
+
+

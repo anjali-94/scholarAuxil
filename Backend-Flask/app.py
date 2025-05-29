@@ -7,8 +7,6 @@ import docx
 import easyocr
 import json
 from werkzeug.utils import secure_filename
-import processingData as pdf_processor
-import get_citations
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 import traceback

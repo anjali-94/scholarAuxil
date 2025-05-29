@@ -89,5 +89,5 @@ export const updatePaper = async (
 };
 
 export const servePaper = (filepath: string): string => {
-  return `${API_BASE_URL}/api/uploads/${filepath}`;
+  return `${API_BASE_URL}/uploads/${filepath}`;
 };

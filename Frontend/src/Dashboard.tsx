@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import AskPromptDrawer from './AskPromptDrawer';
 import NavigationSider from './DashboardWrapper/NavigationSider';
 import HeaderBar from './DashboardWrapper/HeaderBar';
-import UploadSection, { Citation } from './DashboardWrapper/UploadSection';
 import BibifyClone from './DashboardWrapper/biblify_citation';
 import ResearchProgress from './DashboardWrapper/ResearchProgress';
 import CustomTodo from './DashboardWrapper/CustomTodo';
@@ -43,9 +42,6 @@ const Dashboard: React.FC = () => {
   const [showPlagiarismChecker, setShowPlagiarismChecker] = useState(false);
   const [showRepository, setShowRepository] = useState(false);
   const [showBibCitation,setShowBibCitation] = useState(false);
-  const [citations, setCitations] =
-
-    useState<Citation[]>([]);
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, text: 'Select Research Topic', completed: false },
     { id: 2, text: 'Complete Literature Review', completed: false },
@@ -172,10 +168,6 @@ useEffect(() => {
               <BibifyClone/>
             ):(
               <>
-                <UploadSection
-                  citations={citations}
-                  setCitations={setCitations}
-                />
 
                 {/* ⇣ NEW props wired in here ⇣ */}
                 <ResearchProgress

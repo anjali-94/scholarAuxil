@@ -22,7 +22,7 @@ export default function Repository() {
   const [notes, setNotes] = useState('');
   const [lastPageSeen, setLastPageSeen] = useState('');
   const [showModal, setShowModal] = useState(false);
-  // const { message, type, showMessage, clearMessage } = useFlashMessage();
+  const { message, type, showMessage, clearMessage } = useFlashMessage();
 
   // Determine view based on URL parameters
   useEffect(() => {
@@ -368,7 +368,7 @@ export default function Repository() {
               <>
                 <p>
                   <a
-                    href={`${API_BASE_URL}/api/uploads/${currentPaper.filepath}`}
+                    href={`${API_BASE_URL}/uploads/${currentPaper.filepath}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"
@@ -384,14 +384,14 @@ export default function Repository() {
                   <div className="mt-3 mb-3">
                     <h5>Embedded PDF Viewer (Basic)</h5>
                     <iframe
-                      src={`${API_BASE_URL}/api/uploads/${currentPaper.filepath}`}
+                      src={`${API_BASE_URL}/uploads/${currentPaper.filepath}`}
                       width="100%"
                       height="600px"
                       style={{ border: '1px solid #ddd' }}
                       title={currentPaper.title}
                     >
                       Your browser does not support iframes. Please{' '}
-                      <a href={`${API_BASE_URL}/api/uploads/${currentPaper.filepath}`} target="_blank" rel="noopener noreferrer">
+                      <a href={`${API_BASE_URL}/uploads/${currentPaper.filepath}`} target="_blank" rel="noopener noreferrer">
                         click here to open the PDF
                       </a>.
                     </iframe>

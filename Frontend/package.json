@@ -19,7 +19,7 @@
     "bootstrap": "^5.3.6",
     "dompurify": "^3.2.5",
     "express": "^5.1.0",
-    "firebase": "^10.14.1",
+    "firebase": "^11.8.1",
     "framer-motion": "^12.12.1",
     "lucide": "^0.511.0",
     "lucide-react": "^0.511.0",
@@ -29,6 +29,8 @@
     "qs": "^6.14.0",
     "react": "^18.3.1",
     "react-aiwriter": "^1.0.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-big-calendar": "^1.19.2",
     "react-dom": "^18.3.1",
     "react-hook-speech-to-text": "^0.8.0",
     "react-icons": "^5.5.0",
@@ -43,8 +45,10 @@
     "@types/dompurify": "^3.0.5",
     "@types/pdfjs-dist": "^2.10.377",
     "@types/react": "^18.3.3",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-big-calendar": "^1.16.2",
     "@types/react-dom": "^18.3.0",
-    "@types/react-pdf": "^6.2.0",
+    "@types/react-pdf": "^5.0.7",
     "@types/react-transition-group": "^4.4.12",
     "@types/styled-components": "^5.1.34",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -57,6 +61,6 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.2.2",
-    "vite": "^5.3.4"
+    "vite": "^6.3.5"
   }
 }

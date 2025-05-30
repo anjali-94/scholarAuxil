@@ -1,92 +1,3 @@
-// // import React from 'react';
-// // import { Layout, Button } from 'antd';
-// // import { MenuOutlined } from '@ant-design/icons';
-
-// // const { Header } = Layout;
-
-// // type HeaderBarProps = {
-// //   collapsed: boolean;
-// //   setCollapsed: (val: boolean) => void;
-// // };
-
-// // const HeaderBar: React.FC<HeaderBarProps> = ({ collapsed, setCollapsed }) => {
-// //   return (
-// //     <Header
-// //       style={{
-// //         background: '#fff',
-// //         padding: '0 16px',
-// //         display: 'flex',
-// //         alignItems: 'center',
-// //         justifyContent: 'space-between',
-// //       }}
-// //     >
-// //       <Button type="text" icon={<MenuOutlined />} onClick={() => setCollapsed(!collapsed)} />
-// //     </Header>
-// //   );
-// // };
-
-// // export default HeaderBar;
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { Layout, Button, Typography, Avatar } from 'antd';
-// import { MenuOutlined, UserOutlined } from '@ant-design/icons';
-// import moment from 'moment';
-
-// const { Header } = Layout;
-// const { Text } = Typography;
-
-// type HeaderBarProps = {
-//   collapsed: boolean;
-//   setCollapsed: (val: boolean) => void;
-// };
-
-// const HeaderBar: React.FC<HeaderBarProps> = ({ collapsed, setCollapsed }) => {
-//   const [currentTime, setCurrentTime] = useState(moment().format('HH:mm:ss'));
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentTime(moment().format('HH:mm:ss'));
-//     }, 1000);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <Header
-//       style={{
-//         background: '#fff',
-//         padding: '0 16px',
-//         display: 'flex',
-//         alignItems: 'center',
-//         justifyContent: 'space-between',
-//         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-//       }}
-//     >
-//       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-//         <Button
-//           type="text"
-//           icon={<MenuOutlined />}
-//           onClick={() => setCollapsed(!collapsed)}
-//         />
-//         <Text strong style={{ fontSize: '18px', color: '#2563eb' }}>
-//           👋 Welcome Back, Researcher!
-//         </Text>
-//       </div>
-
-//       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-//         <Text type="secondary" style={{ fontSize: '16px' }}>
-//           🕒 {currentTime}
-//         </Text>
-//         <Avatar icon={<UserOutlined />} />
-//       </div>
-//     </Header>
-//   );
-// };
-
-// export default HeaderBar;
-
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -107,7 +18,6 @@ import moment from 'moment';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
-
 const { Header } = Layout;
 const { Text } = Typography;
 
@@ -119,7 +29,7 @@ type HeaderBarProps = {
 
 const HeaderBar: React.FC<HeaderBarProps> = ({ collapsed, setCollapsed, logout }) => {
   const [currentTime, setCurrentTime] = useState(moment().format('HH:mm:ss'));
-  const [userInitial, setUserInitial] = useState<string>('U'); // Default
+  const [userInitial, setUserInitial] = useState<string>('U');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -173,22 +83,55 @@ const HeaderBar: React.FC<HeaderBarProps> = ({ collapsed, setCollapsed, logout }
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        flexWrap: 'nowrap',
         boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+        overflowX: 'auto',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          minWidth: 0, // important to allow text to shrink
+          flex: 1,
+        }}
+      >
         <Button
           type="text"
           icon={<MenuOutlined />}
           onClick={() => setCollapsed(!collapsed)}
         />
-        <Text strong style={{ fontSize: '18px', color: '#2563eb' }}>
-          👋 Welcome Back, Researcher!
+        <Text
+          strong
+          style={{
+            fontSize: '20px',
+            color: '#2563eb',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+        ScholAuxil
+          
         </Text>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <Text type="secondary" style={{ fontSize: '16px' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          flexShrink: 0,
+        }}
+      >
+        <Text
+          type="secondary"
+          style={{
+            fontSize: '16px',
+            whiteSpace: 'nowrap',
+          }}
+        >
           🕒 {currentTime}
         </Text>
         <Dropdown overlay={menu} placement="bottomRight" arrow>
@@ -204,3 +147,4 @@ const HeaderBar: React.FC<HeaderBarProps> = ({ collapsed, setCollapsed, logout }
 };
 
 export default HeaderBar;
+

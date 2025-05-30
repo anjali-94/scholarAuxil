@@ -70,9 +70,7 @@ const ProfilePage: React.FC = () => {
       <Divider />
 
       <Space style={{ display: 'flex', justifyContent: 'center', marginTop: 24 }}>
-        <Button type="primary" disabled>
-          Edit Profile
-        </Button>
+        
         <Button danger>
           <a href="/login">
           Sign Out</a>

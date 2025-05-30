@@ -200,7 +200,6 @@ def upload_file():
         return jsonify({'error': 'File type not allowed'}), 400
 
 
-
 @app.route('/plagiarism/check', methods=['POST'])
 def plagiarism_check():
     try:
@@ -218,33 +217,44 @@ def plagiarism_check():
 
         # Read the file content based on the file type
         file_ext = file.filename.rsplit('.', 1)[1].lower()
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
+        file.save(file_path)
 
         if file_ext == 'pdf':
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
-            file.save(file_path)
             file_content = extract_text_from_pdf(file_path)
-            os.remove(file_path)
-
         elif file_ext == 'docx':
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
-            file.save(file_path)
             file_content = extract_text_from_docx(file_path)
-            os.remove(file_path)
-
         elif file_ext in {'png', 'jpg', 'jpeg'}:
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
-            file.save(file_path)
             file_content = extract_text_from_image(file_path)
-            os.remove(file_path)
-
         else:
             file_content = file.read().decode('utf-8', errors='ignore')
 
-        plagiarism_percentage = check_plagiarism(file_content)
+        os.remove(file_path)
 
-        return jsonify({"plagiarism_percentage": plagiarism_percentage, "result": "Plagiarism check complete."})
+        # Perform plagiarism check
+        result = check_plagiarism(file_content)
+        plagiarism_percentage = result["plagiarism_percentage"]
+        results = result["results"]
+
+        # Format response with colored text (for HTML rendering)
+        formatted_results = []
+        for res in results:
+            sentence = res["sentence"]
+            color = res["color"]
+            source = res["source"]
+            formatted_sentence = f'<span style="color:{color}">{sentence}</span>'
+            if source:
+                formatted_sentence += f' <a href="{source}" target="_blank">(Source)</a>'
+            formatted_results.append(formatted_sentence)
+
+        return jsonify({
+            "plagiarism_percentage": plagiarism_percentage,
+            "results": formatted_results,
+            "message": "Plagiarism check complete."
+        })
 
     except Exception as e:
+        logger.error(f"Error in plagiarism check: {str(e)}")
         return jsonify({"error": str(e)}), 500
     
 @app.route('/api/repositories', methods=['GET'])
@@ -492,50 +502,10 @@ def get_citation_fields(media_type):
 @app.route('/health')
 def health_check():
     return jsonify({'status': 'healthy', 'service': 'bibify-proxy'})
-
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
